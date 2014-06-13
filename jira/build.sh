@@ -1,3 +1,1 @@
-#!/bin/sh
-
-sudo docker build -t jira .
+../bin/build.sh
