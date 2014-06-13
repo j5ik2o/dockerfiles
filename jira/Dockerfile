@@ -8,6 +8,7 @@ ENV JIRA_NAME atlassian-jira-${JIRA_VERSION}
 
 ADD ./files/dl/${JIRA_NAME}-war.tar.gz /tmp/
 ADD ./files/dl/jira-jars-tomcat-distribution-6.1-tomcat-7x.zip /tmp/
+ADD ./files/dl/mysql-connector-java-5.1.31.zip /tmp/
 ADD ./files/jira-application.properties /tmp/
 ADD ./files/jira.xml /tmp/
 ADD ./files/server.xml.patch /tmp/
@@ -16,6 +17,8 @@ ADD ./files/setenv.sh /tmp/
 RUN useradd --create-home --comment "Account for running JIRA" --shell /bin/bash jira
 
 RUN mkdir -p ${JIRA_HOME}
+
+RUN cd /tmp && unzip mysql-connector-java-5.1.31.zip && cp mysql-connector-java-5.1.31/mysql-connector-java-5.1.31-bin.jar /tmp/${JIRA_NAME}-war/webapp/WEB-INF/lib
 
 RUN cp -f /tmp/jira-application.properties /tmp/${JIRA_NAME}-war/edit-webapp/WEB-INF/classes
 
