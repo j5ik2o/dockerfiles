@@ -1,3 +1,1 @@
-#!/bin/sh
-
-sudo docker build -t base .
+../bin/build.sh

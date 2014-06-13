@@ -6,12 +6,12 @@ ENV JIRA_HOME /var/lib/atlassian/jira
 ENV JIRA_VERSION 6.2.7
 ENV JIRA_NAME atlassian-jira-${JIRA_VERSION}
 
-ADD ./files/${JIRA_NAME}-war.tar.gz /tmp/
-ADD ./files/jira-jars-tomcat-distribution-6.1-tomcat-7x.zip /tmp/
-ADD ./jira-application.properties /tmp/
-ADD ./jira.xml /tmp/
-ADD ./server.xml.patch /tmp/
-ADD ./setenv.sh /tmp/
+ADD ./files/dl/${JIRA_NAME}-war.tar.gz /tmp/
+ADD ./files/dl/jira-jars-tomcat-distribution-6.1-tomcat-7x.zip /tmp/
+ADD ./files/jira-application.properties /tmp/
+ADD ./files/jira.xml /tmp/
+ADD ./files/server.xml.patch /tmp/
+ADD ./files/setenv.sh /tmp/
 
 RUN useradd --create-home --comment "Account for running JIRA" --shell /bin/bash jira
 
