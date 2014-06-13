@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo docker run -t jira
+sudo docker run -p 8081:8080 -t jira

@@ -3,7 +3,7 @@ FROM base-with-tomcat7
 MAINTAINER Junichi Kato j5ik2o@gmail.com
 
 ENV JIRA_HOME /var/lib/atlassian/jira
-ENV JIRA_VERSION 6.2.7
+ENV JIRA_VERSION 6.2.6
 ENV JIRA_NAME atlassian-jira-${JIRA_VERSION}
 
 ADD ./files/dl/${JIRA_NAME}-war.tar.gz /tmp/
@@ -25,7 +25,7 @@ RUN cp -f /tmp/jira-application.properties /tmp/${JIRA_NAME}-war/edit-webapp/WEB
 RUN cd /tmp/${JIRA_NAME}-war && \
   sh build.sh && \
   mkdir -p /opt/atlassian/ && \
-  cp /tmp/${JIRA_NAME}-war/dist-tomcat/${JIRA_NAME}.war /opt/atlassian/
+  cp /tmp/${JIRA_NAME}-war/dist-generic/${JIRA_NAME}.war /opt/atlassian/
 
 RUN mkdir /tmp/tomcat7-update-jars && \
   cd /tmp/tomcat7-update-jars && \
@@ -41,6 +41,6 @@ RUN chown -R jira ${JIRA_HOME} && chown -R jira /opt/apache-tomcat-7.0.54
 
 EXPOSE 8080
 
-USER jira
+#USER jira
 
 CMD ["/bin/sh", "-e", "/opt/apache-tomcat/bin/catalina.sh", "run"]
