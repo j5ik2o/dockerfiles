@@ -2,7 +2,7 @@
 
 . ./env.sh
 
-docker build --no-cache=true -t $NAME .
+docker build -t $NAME .
 
 reimport() {
   CID=$(sudo docker run -d $NAME /bin/bash -c "")
