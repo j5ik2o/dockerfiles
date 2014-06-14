@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 MAINTAINER Junichi Kato j5ik2o@gmail.com
 
-ENV JAVA_VERSION 7
+ENV JAVA_VERSION 8
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -q -y git-core curl unzip patch sudo xmlstarlet \
