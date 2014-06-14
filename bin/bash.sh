@@ -2,4 +2,4 @@
 
 . ./env.sh
 
-sudo docker run -t $NAME
+sudo docker run -i -t $NAME /bin/bash
