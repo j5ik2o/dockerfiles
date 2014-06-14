@@ -2,7 +2,7 @@
 
 . ./env.sh
 
-docker build -t $NAME .
+docker build -t "j5ik2o/$NAME" .
 
 reimport() {
   CID=$(sudo docker run -d $NAME /bin/bash -c "")
