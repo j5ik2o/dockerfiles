@@ -2,4 +2,4 @@
 
 . ./env.sh
 
-sudo docker run -i -t $NAME /bin/bash
+docker run -i -t "j5ik2o/$NAME" /bin/bash

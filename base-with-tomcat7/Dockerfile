@@ -1,14 +1,15 @@
-FROM base
+FROM j5ik2o/base
 
 MAINTAINER Junichi Kato j5ik2o@gmail.com
 
-ENV TOMCAT_VERSION 7.0.54
+ENV TOMCAT_VERSION 7.0.52
 ENV TOMCAT_HOME /opt/apache-tomcat
 
-ADD apache-tomcat-${TOMCAT_VERSION}.tar.gz /tmp
+RUN curl -Lks http://archive.apache.org/dist/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -o /tmp/apache-tomcat.tar.gz
 
 RUN mkdir -p /opt && \
-  mv /tmp/apache-tomcat-${TOMCAT_VERSION} /opt && \
-  ln -s /opt/apache-tomcat-${TOMCAT_VERSION} ${TOMCAT_HOME}
+  cd /opt && \
+  tar zxvf /tmp/apache-tomcat.tar.gz && \
+  ln -s ${TOMCAT_HOME}-${TOMCAT_VERSION} ${TOMCAT_HOME}
 
 

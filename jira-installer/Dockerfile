@@ -18,4 +18,4 @@ VOLUME ["/opt/atlassian/jira/logs"]
 
 WORKDIR /opt/atlassian/jira/bin
 
-CMD ["/opt/atlassian/jira/bin/start-jira.sh", "-fg"]
+#CMD ["/opt/atlassian/jira/bin/start-jira.sh", "-fg"]
