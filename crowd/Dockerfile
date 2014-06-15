@@ -36,7 +36,7 @@ RUN cp ${TMP_DIR}/*.jar ${TOMCAT_HOME}/lib
 
 RUN chown crowd:crowd ${TOMCAT_HOME} && chown -R crowd:crowd ${TOMCAT_HOME}-${TOMCAT_VERSION}
 
-EXPOSE 8080
+EXPOSE 8080 8009
 
 VOLUME ["/opt/apache-tomcat/logs", "/var/lib/atlassian/crowd"]
 

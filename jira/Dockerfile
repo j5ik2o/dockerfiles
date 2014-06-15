@@ -61,7 +61,7 @@ RUN cp /tmp/setenv.sh ${TOMCAT_HOME}/bin/
 
 RUN chown jira:jira ${TOMCAT_HOME} && chown -R jira:jira /opt/apache-tomcat-${TOMCAT_VERSION}
 
-EXPOSE 8080
+EXPOSE 8080 8009
 
 VOLUME ["/opt/apache-tomcat/logs", "/var/lib/atlassian/jira"]
 
