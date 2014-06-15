@@ -1,4 +1,4 @@
-<Context path="/jira" docBase="${catalina.home}/atlassian-jira-${JIRA_VERSION}.war" debug="0" useHttpOnly="true">
+<Context path="/jira" docBase="${catalina.home}/atlassian-jira-${version}.war" debug="0" useHttpOnly="true">
 
   <Resource name="UserTransaction" auth="Container" type="javax.transaction.UserTransaction"
     factory="org.objectweb.jotm.UserTransactionFactory" jotm.timeout="60"/>

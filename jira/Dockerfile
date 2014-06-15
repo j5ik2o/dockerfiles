@@ -29,7 +29,7 @@ RUN cd ${TMP_DIR} &&\
 # create user
 RUN /usr/sbin/useradd -d $JIRA_HOME -c "Account for running JIRA" -s /bin/bash jira
 
-# build
+# build & install
 RUN echo "jira.home=$JIRA_HOME" > cd ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war/edit-webapp/WEB-INF/classes/jira-application.properties
 RUN cd ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war && ./build.sh
 RUN cp ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war/dist-tomcat/atlassian-jira-${JIRA_VERSION}.war ${TOMCAT_HOME}
@@ -43,8 +43,8 @@ rm -f jul-to-slf4j-*.jar &&\
 rm -f jcl-over-slf4j-*.jar
 RUN cd ${TOMCAT_HOME}/conf && patch < /tmp/server.xml.patch
 RUN cp /tmp/setenv.sh ${TOMCAT_HOME}/bin/
-RUN cp ${TMP_DIR}/*.jar /opt/apache-tomcat/lib
-RUN mkdir -p /opt/apache-tomcat/conf/Catalina/localhost && \
+RUN cp ${TMP_DIR}/*.jar ${TOMCAT_HOME}/lib
+RUN mkdir -p ${TOMCAT_HOME}/conf/Catalina/localhost && \
   cp ${TMP_DIR}/jira.xml ${TOMCAT_HOME}/conf/Catalina/localhost/
 RUN chown jira:jira ${TOMCAT_HOME} && chown -R jira:jira ${TOMCAT_HOME}-${TOMCAT_VERSION}
 
