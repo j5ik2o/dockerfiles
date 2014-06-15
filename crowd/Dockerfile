@@ -14,13 +14,14 @@ RUN curl -Lks http://www.atlassian.com/software/crowd/downloads/binary/atlassian
 RUN curl -Lks http://central.maven.org/maven2/javax/mail/mail/1.4.7/mail-1.4.7.jar -o ${TMP_DIR}/mail-1.4.7.jar
 RUN curl -Lks http://central.maven.org/maven2/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar -o ${TMP_DIR}/jta-1.0.1B.jar
 RUN curl -Lks http://central.maven.org/maven2/javax/activation/activation/1.1/activation-1.1.jar -o ${TMP_DIR}/activation-1.1.jar
+RUN curl -Lks http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.31/mysql-connector-java-5.1.31.jar -o ${TMP_DIR}/mysql-connector-java-5.1.31.jar
 
 # prepare for building
 RUN cd ${TMP_DIR} &&\
  mkdir -p atlassian-crowd-${CROWD_VERSION}-war &&\
  cd atlassian-crowd-${CROWD_VERSION}-war && \
  unzip ../atlassian-crowd-${CROWD_VERSION}-war.zip &&\
- cd .. &&\
+ cd ../ &&\
  chown root:root *.jar &&\
  chmod o+rwx *.jar &&\
  chmod g+rwx *.jar &&\

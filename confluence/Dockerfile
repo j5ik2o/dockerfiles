@@ -27,7 +27,6 @@ RUN cd ${TMP_DIR} &&\
 # create user
 RUN /usr/sbin/useradd -d $CONFLUENCE_HOME -c "Account for running CONFLUENCE" -s /bin/bash confluence
 
-
 # build
 RUN echo "confluence.home=${CONFLUENCE_HOME}" > ${TMP_DIR}/confluence-${CONFLUENCE_VERSION}/confluence/WEB-INF/classes/confluence-init.properties 
 RUN cd ${TMP_DIR}/confluence-${CONFLUENCE_VERSION} && ./build.sh
@@ -36,8 +35,8 @@ RUN cp ${TMP_DIR}/confluence-${CONFLUENCE_VERSION}/dist/confluence-${CONFLUENCE_
 # tomcat configuration
 RUN cd ${TOMCAT_HOME}/conf && patch < /tmp/server.xml.patch
 RUN cp /tmp/setenv.sh ${TOMCAT_HOME}/bin/
-RUN cp ${TMP_DIR}/*.jar /opt/apache-tomcat/lib
-RUN mkdir -p /opt/apache-tomcat/conf/Catalina/localhost &&\
+RUN cp ${TMP_DIR}/*.jar ${TOMCAT_HOME}/lib
+RUN mkdir -p ${TOMCAT_HOME}/conf/Catalina/localhost &&\
  cp ${TMP_DIR}/confluence.xml ${TOMCAT_HOME}/conf/Catalina/localhost/
 RUN chown confluence:confluence ${TOMCAT_HOME} && chown -R confluence:confluence ${TOMCAT_HOME}-${TOMCAT_VERSION}
 

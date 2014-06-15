@@ -5,7 +5,7 @@ MAINTAINER Junichi Kato j5ik2o@gmail.com
 ENV JAVA_VERSION 7
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -q -y git-core curl unzip patch sudo xmlstarlet \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -q -y git-core curl unzip patch perl sudo \
   software-properties-common python-software-properties
 
 # Install Java 7
