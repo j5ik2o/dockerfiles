@@ -9,17 +9,14 @@ ENV CROWD_HOME /var/lib/atlassian/crowd
 ADD crowd.xml /tmp/
 
 RUN curl -Lks http://www.atlassian.com/software/crowd/downloads/binary/atlassian-crowd-${CROWD_VERSION}-war.zip -o ${TMP_DIR}/atlassian-crowd-${CROWD_VERSION}-war.zip
-
-#RUN curl -Lks http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.31.zip -o ${TMP_DIR}/mysql-connector-java.zip
+RUN curl -Lks http://central.maven.org/maven2/javax/mail/mail/1.4.7/mail-1.4.7.jar -o ${TMP_DIR}/mail-1.4.7.jar
+RUN curl -Lks http://central.maven.org/maven2/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar -o ${TMP_DIR}/jta-1.0.1B.jar
+RUN curl -Lks http://central.maven.org/maven2/javax/activation/activation/1.1/activation-1.1.jar -o ${TMP_DIR}/activation-1.1.jar
 
 RUN cd ${TMP_DIR} &&\
   mkdir -p atlassian-crowd-${CROWD_VERSION}-war &&\
   cd atlassian-crowd-${CROWD_VERSION}-war && \
   unzip ../atlassian-crowd-${CROWD_VERSION}-war.zip
-
-#  unzip mysql-connector-java.zip &&\
-#  cp mysql-connector-java-5.1.31/mysql-connector-java-5.1.31-bin.jar ${TMP_DIR} &&\
-#  chown root:root *.jar 
 
 RUN /usr/sbin/useradd -d $CROWD_HOME -c "Account for running CROWD" -s /bin/bash crowd
 
@@ -35,11 +32,14 @@ RUN mv ${TMP_DIR}/atlassian-crowd-${CROWD_VERSION}-war ${TOMCAT_HOME}
 
 RUN mkdir -p ${TOMCAT_HOME}/conf/Catalina/localhost && cp ${TMP_DIR}/crowd.xml ${TOMCAT_HOME}/conf/Catalina/localhost/
 
+RUN cp ${TMP_DIR}/*.jar ${TOMCAT_HOME}/lib
+
 RUN chown crowd:crowd ${TOMCAT_HOME} && chown -R crowd:crowd ${TOMCAT_HOME}-${TOMCAT_VERSION}
 
-#EXPOSE 8080
+EXPOSE 8080
 
-#VOLUME ["/opt/apache-tomcat/logs"]
-#USER crowd
+VOLUME ["/opt/apache-tomcat/logs", "/var/lib/atlassian/crowd"]
 
-#CMD ["/opt/apache-tomcat/bin/catalina.sh", "run"]
+USER crowd
+
+CMD ["/opt/apache-tomcat/bin/catalina.sh", "run"]

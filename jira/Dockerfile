@@ -63,7 +63,8 @@ RUN chown jira:jira ${TOMCAT_HOME} && chown -R jira:jira /opt/apache-tomcat-${TO
 
 EXPOSE 8080
 
-VOLUME ["/opt/apache-tomcat/logs"]
+VOLUME ["/opt/apache-tomcat/logs", "/var/lib/atlassian/jira"]
+
 USER jira
 
 CMD ["/opt/apache-tomcat/bin/catalina.sh", "run"]
