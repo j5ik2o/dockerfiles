@@ -1,2 +1,2 @@
-<Context path="/confluence" docBase="/opt/apache-tomcat/atlassian-confluence-5.5.2.war" debug="0" reloadable="true">
+<Context path="/confluence" docBase="${catalina.home}/atlassian-confluence-${version}.war" debug="0" reloadable="true">
 </Context>

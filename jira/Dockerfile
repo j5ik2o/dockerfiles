@@ -46,7 +46,7 @@ RUN cp /tmp/setenv.sh ${TOMCAT_HOME}/bin/
 RUN cp ${TMP_DIR}/*.jar /opt/apache-tomcat/lib
 RUN mkdir -p /opt/apache-tomcat/conf/Catalina/localhost && \
   cp ${TMP_DIR}/jira.xml ${TOMCAT_HOME}/conf/Catalina/localhost/
-RUN chown jira:jira ${TOMCAT_HOME} && chown -R jira:jira {$TOMCAT_HOME}-${TOMCAT_VERSION}
+RUN chown jira:jira ${TOMCAT_HOME} && chown -R jira:jira ${TOMCAT_HOME}-${TOMCAT_VERSION}
 
 # create home direactory
 RUN mkdir -p ${JIRA_HOME} &&\

@@ -1,1 +1,1 @@
-export CATALINA_OPTS="$CATALINA_OPTS -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Xms1g -Xmx2g -XX:MaxPermSize=256m"
+export CATALINA_OPTS="$CATALINA_OPTS -Dversion=${CONFLUENCE_VERSION} -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Xms1g -Xmx2g -XX:MaxPermSize=256m"
