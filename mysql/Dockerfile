@@ -12,6 +12,6 @@ EXPOSE 3306
 VOLUME ["/var/lib/mysql", "/etc/mysql"]
 
 USER mysql
- 
-#CMD ["/bin/bash", "/opt/startup.sh"]
+
+CMD ["/bin/bash", "/opt/startup.sh"]
 
