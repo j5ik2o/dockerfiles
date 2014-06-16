@@ -31,20 +31,20 @@ RUN mkdir -p /opt && mv ${TMP_DIR}/atlassian-stash-${STASH_VERSION} /opt/
 
 # tomcat configuration
 RUN ln -s ${TOMCAT_HOME}-${TOMCAT_VERSION} ${TOMCAT_HOME}
-RUN cp /tmp/setenv.sh ${TOMCAT_HOME}/bin/
+RUN cp ${TMP_DIR}/setenv.sh ${TOMCAT_HOME}/bin/
 RUN cp ${TMP_DIR}/*.jar ${TOMCAT_HOME}/lib
 RUN chown stash:stash ${TOMCAT_HOME} && chown -R stash:stash ${TOMCAT_HOME}-${TOMCAT_VERSION}
 
 # create home direactory
 RUN mkdir -p ${STASH_HOME} &&\
 chown stash:stash ${STASH_HOME} &&\
-chmod u+rwx ${STASH_HOME}  &&\
+chmod u+rwx ${STASH_HOME} &&\
 chmod g+rwx ${STASH_HOME}
 
-EXPOSE 8080 8009
+EXPOSE 7990
 
-VOLUME ["/opt/apache-tomcat/logs", "/var/lib/atlassian/stash"]
+VOLUME ["/opt/atlassian-stash/logs", "/var/lib/atlassian/stash"]
 
 USER stash
 
-CMD ["/opt/apache-tomcat/bin/catalina.sh", "run"]
+CMD ["/opt/atlassian-stash/bin/catalina.sh", "run"]

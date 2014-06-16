@@ -4,7 +4,7 @@ DOCKER_BUILD_NOCACHE=$(DOCKER) build --no-cache=true
 BASE_NAME = $(patsubst .%.d,%, $(1)) 
 
 .%.d:
-	$(DOCKER_BUILD) -t j5ik2o/$(call BASE_NAME, $@) $(call BASE_NAME, $@)
+	$(DOCKER_BUILD_NOCACHE) -t j5ik2o/$(call BASE_NAME, $@) $(call BASE_NAME, $@)
 	touch $@
 
 all: .crowd.d .jira.d .confluence.d .stash.d
