@@ -58,6 +58,6 @@ EXPOSE 8080 8009
 
 VOLUME ["/opt/apache-tomcat/logs", "/var/lib/atlassian/jira"]
 
-#USER jira
+USER jira
 
-#CMD ["/opt/apache-tomcat/bin/catalina.sh", "run"]
+CMD ["/opt/apache-tomcat/bin/catalina.sh", "run"]

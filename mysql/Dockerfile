@@ -14,5 +14,5 @@ VOLUME ["/var/lib/mysql", "/var/log/mysql", "/etc/mysql"]
 
 #USER mysql
 
-#CMD ["/bin/bash", "/opt/startup.sh"]
+CMD ["/bin/sh", "/opt/startup.sh"]
 
