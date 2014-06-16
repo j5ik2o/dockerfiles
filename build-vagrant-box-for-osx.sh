@@ -2,7 +2,7 @@
 
 set -e
 
-brew tap homebrew/einary
+brew tap homebrew/binary
 brew install packer
 
 mkdir -p temp
