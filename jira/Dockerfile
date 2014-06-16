@@ -29,7 +29,7 @@ RUN /usr/sbin/useradd -d $JIRA_HOME -c "Account for running JIRA" -s /bin/bash j
 
 # build & install
 RUN echo "jira.home=$JIRA_HOME" > cd ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war/edit-webapp/WEB-INF/classes/jira-application.properties
-RUN cd ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war && ./build.sh
+RUN cd ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war && sh build.sh
 RUN cp ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war/dist-tomcat/atlassian-jira-${JIRA_VERSION}.war ${TOMCAT_HOME}
 
 # tomcat configuration

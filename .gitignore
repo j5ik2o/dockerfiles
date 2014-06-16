@@ -2,3 +2,4 @@
 *.zip
 *.bin
 .vagrant
+.d
