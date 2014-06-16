@@ -7,7 +7,7 @@ BASE_NAME = $(patsubst .%.d,%, $(1))
 	$(DOCKER_BUILD_NOCACHE) -t j5ik2o/$(call BASE_NAME, $@) $(call BASE_NAME, $@)
 	touch $@
 
-all: .crowd.d .jira.d .confluence.d .stash.d
+all: .crowd.d .jira.d .confluence.d .stash.d .nginx-atlassian.d
 
 .base-with-tomcat7.d: .base.d
 
@@ -21,7 +21,11 @@ all: .crowd.d .jira.d .confluence.d .stash.d
 
 .stash.d: .base-with-tomcat7.d
 
+.nginx.d:
+
+.nginx-atlassian.d: .nginx.d
+
 clean:
-	rm -f *.d
+	rm -f .*.d
 
 
