@@ -13,14 +13,12 @@ ENV JIRA_HOME /var/lib/atlassian/jira
 # download
 RUN curl -Lks http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-${JIRA_VERSION}-war.tar.gz -o ${TMP_DIR}/atlassian-jira-${JIRA_VERSION}-war.tar.gz
 RUN curl -Lks http://www.atlassian.com/software/jira/downloads/binary/jira-jars-tomcat-distribution-6.1-tomcat-7x.zip -o ${TMP_DIR}/jira-jars-distribution-tomcat.zip
-RUN curl -Lks http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.31.zip -o ${TMP_DIR}/mysql-connector-java.zip
+RUN curl -Lks http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.31/mysql-connector-java-5.1.31.jar -o ${TMP_DIR}/mysql-connector-java-5.1.31.jar
 
 # prepare for building
 RUN cd ${TMP_DIR} &&\
  tar zxvf atlassian-jira-${JIRA_VERSION}-war.tar.gz &&\
  unzip jira-jars-distribution-tomcat.zip &&\
- unzip mysql-connector-java.zip &&\
- cp mysql-connector-java-5.1.31/mysql-connector-java-5.1.31-bin.jar ${TMP_DIR} &&\
  chown root:root *.jar &&\
  chmod o+rwx *.jar &&\
  chmod g+rwx *.jar &&\
