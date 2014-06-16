@@ -3,6 +3,7 @@ FROM j5ik2o/base-with-tomcat7
 MAINTAINER Junichi Kato <j5ik2o@gmail.com>
 
 ADD setenv.sh /tmp/
+ADD build.sh.patch /tmp/
 ADD server.xml.patch /tmp/
 ADD jira.xml /tmp/
 
