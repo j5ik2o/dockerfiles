@@ -7,4 +7,6 @@ ADD atlassian.conf /etc/nginx/conf.d/
 
 EXPOSE 80
 
+VOLUME ["/var/log/nginx", "/etc/nginx"]
+
 CMD ["nginx"]

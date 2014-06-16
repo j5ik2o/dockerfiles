@@ -4,10 +4,10 @@ DOCKER_BUILD_NOCACHE=$(DOCKER) build --no-cache=true
 BASE_NAME = $(patsubst .%.d,%, $(1)) 
 
 .%.d:
-	$(DOCKER_BUILD_NOCACHE) -t j5ik2o/$(call BASE_NAME, $@) $(call BASE_NAME, $@)
+	$(DOCKER_BUILD_NOCACHE) -t j5ik2o/$(call BASE_NAME,$@) $(call BASE_NAME,$@)
 	touch $@
 
-all: .crowd.d .jira.d .confluence.d .stash.d .nginx-atlassian.d
+all: .crowd.d .jira.d .confluence.d .stash.d .nginx-atlassian.d .mysql.d
 
 .base-with-tomcat7.d: .base.d
 
@@ -20,6 +20,8 @@ all: .crowd.d .jira.d .confluence.d .stash.d .nginx-atlassian.d
 .confluence.d: .base-with-tomcat7.d
 
 .stash.d: .base-with-tomcat7.d
+
+.mysql.d:
 
 .nginx.d:
 
