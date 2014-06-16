@@ -1,0 +1,13 @@
+*** build.sh.org	Mon Jun 16 10:01:01 2014
+--- build.sh	Mon Jun 16 10:01:18 2014
+***************
+*** 1,8 ****
+  #!/bin/sh
+
+- chmod u+x ./tools/ant/bin/antRun
+- chmod u+x ./tools/ant/bin/ant
+-
+  # ----- Verify and Set Required Environment Variables -------------------------
+
+  if [ "$TERM" = "cygwin" ] ; then
+--- 1,5 ----
